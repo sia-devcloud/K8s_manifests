@@ -4,7 +4,7 @@ metadata:
   name: postgressdb
 spec:
   containers:
-    - name: postgressdb_container
+    - name: postgressdbcontainer
       image: postgres:16
       env:
         - name: POSTGRES_PASSWORD
@@ -13,6 +13,8 @@ spec:
           value: nopdb
         - name: POSTGRES_USER 
           value: shahinur
+      ports:
+        - containerPort: 5432
       resources:
         limits:
           cpu: "500m"
