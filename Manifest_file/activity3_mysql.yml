@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysqldemo
+spec:
+  containers:
+    - name: mysql
+      image: mysql:9.0
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: sxz979
+        - name: MYSQL_DATABASE
+          value: nopdb
+        - name: MYSQL_USER
+          value: shahinur
+        - name: MYSQL_PASSWORD
+          value: shahinur123
+      resources:
+        limits:
+          cpu: "500m"
+          memory: "512Mi"

@@ -9,9 +9,9 @@ sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 wget https://github.com/Mirantis/cri-dockerd/releases/download/v0.3.14/cri-dockerd_0.3.14.3-0.ubuntu-jammy_amd64.deb
-sudo apt install cri-dockerd_0.3.14.3-0.ubuntu-jammy_amd64.deb
+sudo dpkg -i cri-dockerd_0.3.14.3-0.ubuntu-jammy_amd64.deb
 
-## On all 
+### On master node / control plane
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 ### On master node / control plane
 kubeadm init --cri-socket unix:///var/run/cri-dockerd.sock

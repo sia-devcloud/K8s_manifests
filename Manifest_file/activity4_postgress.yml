@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgressdb
+spec:
+  containers:
+    - name: postgressdb_container
+      image: postgres:16
+      env:
+        - name: POSTGRES_PASSWORD
+          value: sxz979
+        - name: POSTGRES_DB
+          value: nopdb
+        - name: POSTGRES_USER 
+          value: shahinur
+      resources:
+        limits:
+          cpu: "500m"
+          memory: "512Mi"
