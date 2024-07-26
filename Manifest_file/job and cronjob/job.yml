@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jobmanifest
+spec:
+  backoffLimit: 2
+  template:
+    metadata:
+      name: jobdemo
+    spec:
+      containers:
+        - name: job-container
+          image: alpine
+          args:
+            - sleep
+            - 10s
+      restartPolicy: OnFailure

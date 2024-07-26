@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cron-jobmanifest
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    metadata:
+      name: cronjob
+    spec:
+      backoffLimit: 2
+      template:
+        metadata:
+          labels:
+            app: cron
+        spec:
+          containers:
+            - name: cron
+              image: alpine
+              args:
+                - sleep
+                - 10s
+          restartPolicy: OnFailure
