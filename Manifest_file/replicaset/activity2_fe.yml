@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend-rs
+  labels:
+    app: fe
+spec:
+  minReadySeconds: 10
+  replicas: 2
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - fe
+      - key: env
+        operator: In
+        values:
+          - dev
+  template:
+    metadata:
+      labels:
+        app: fe
+        env: dev
+    spec:
+      containers:
+        - name: fe-nop
+          image: siadevops/nopcoommerce:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
