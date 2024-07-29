@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sql-cm
+data:
+  MYSQL_ROOT_PASSWORD: sxz979
+  MYSQL_DATABASE: sql-db
+  MYSQL_USER: shahinur
+  MYSQL_PASSWORD: shahinur123
