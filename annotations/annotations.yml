@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: html-deployment
+  annotations: 
+    kubernetes.io/change-cause: First-version
+  labels:
+    app.kubernetes.io/created-by: Siadevops
+    app.kubernetes.io/component: htmlpage
+    app.kubernetes.io/managed-by: Terraform
+    app.kubernetes.io/name: html
+spec:
+  minReadySeconds: 2
+  replicas: 3
+  selector:
+    matchLabels:
+      app: htmldemo
+  strategy:
+    rollingUpdate: 
+      maxSurge: 3
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: htmldemo
+    spec:
+      containers:
+        - name: deployment-container
+          image: siadevops/htmldemo:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: "250m"
+              memory: "512Mi"
+            
